@@ -195,7 +195,7 @@ export interface UpdateCartResponse {
   createdOrUpdated : boolean;
 }
 
-export async function UpdateCartItem(
+export async function updateCartItem(
   userId: string,
   productId: string,
   qty: number
@@ -309,16 +309,17 @@ export async function deleteProduct(userId: string, productId: string): Promise<
 // }
 
 export interface OrdersResponse {
-  address: string;
-  date: Date;
-  cardHolder?: string;
-  cardNumber: string;
-  
+  orders: {
+    _id: string;
+    address: string;
+    date: Date;
+    cardHolder: string;
+    cardNumber: string;
+  }[];
 }
 
 export async function getOrders(userId: string): Promise<OrdersResponse[] | null> {
 await connect();
-
 
 const userProjection = {
   _id:false, 

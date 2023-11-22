@@ -1,6 +1,6 @@
 import { Types } from 'mongoose';
 import { NextRequest, NextResponse } from 'next/server';
-import { deleteProduct, DeleteProductResponse, getCartItems, getProduct, getUser, UpdateCartItem, UpdateCartResponse} from '@/lib/handlers';
+import { deleteProduct, DeleteProductResponse, getCartItems, getProduct, getUser, updateCartItem, UpdateCartResponse} from '@/lib/handlers';
 
 // P2
 import { Session } from 'next-auth';
@@ -46,7 +46,7 @@ export async function PUT(
   }
 
   //I call the method to update the cart
-  const cartItems = await UpdateCartItem(
+  const cartItems = await updateCartItem(
     params.userId,
     params.productId,
     body.qty
